@@ -1,0 +1,40 @@
+Comando 1: Acesso do utilizador médio ao diretório alto
+
+sudo -u user_grupo_72_78_medio ls /dados/alto_grupo_72_78
+
+Esperado: Permission denied (print do erro).
+
+
+Comando 2: Acesso do utilizador baixo ao diretório médio
+
+sudo -u user_grupo_72_78_baixo ls /dados/médio_grupo_72_78
+
+Esperado: Permission denied (print do erro).
+
+
+Comando 3: Acesso do utilizador alto ao diretório médio
+
+sudo -u user_grupo_72_78_alto ls /dados/médio_grupo_72_78
+
+Esperado: Não conseguir listar os ficheiros do diretório (print da lista).
+
+
+Comando 4: Testar escrita num diretório com restrição
+
+sudo -u user_grupo_72_78_alto touch /dados/médio_grupo_72_78/teste.txt
+
+Esperado: Permission denied (print do erro).
+
+
+Comando 5: Acesso do utilizador alto ao diretório alto
+
+sudo -u user_grupo_72_78_alto ls /dados/médio_grupo_72_78
+
+Esperado: Conseguir listar os ficheiros do diretório (print da lista).
+
+
+Comando 6: Executa o script com um utilizador autorizado (Médio):
+
+sudo -u user_grupo_72_78_medio /usr/local/bin/consulta_segura.sh
+
+Esperado: O script solicita a passphrase, e depois mostra o conteúdo desencriptado. Se a passphrase estiver errada, aparece uma mensagem de erro. (Atenção não conseguimos fazer o do sucesso)
